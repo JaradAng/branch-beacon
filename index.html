@@ -534,6 +534,38 @@
             margin-top: 32px;
         }
 
+        .about-content > .benefits-list {
+            margin-top: 0;
+        }
+
+        /* Center About section title like other section headers */
+        .about .section-header {
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .about .section-title {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: fit-content;
+        }
+
+        /* About text card and focus pills */
+        .about-card {
+            margin-top: 0;
+            text-align: left;
+        }
+
+        .about-card .section-description {
+            margin-bottom: 14px;
+            max-width: none; /* Override default max-width */
+        }
+
         .benefit-item {
             display: flex;
             gap: 20px;
@@ -1131,8 +1163,7 @@
                     <div class="hero-subtitle">Guiding Growth, Illuminating Potential</div>
                     <h1 class="hero-title">Where Every Child's Journey Branches Into New Possibilities</h1>
                     <p class="hero-description">
-                        Branch & Beacon provides evidence-based ABA therapy that nurtures growth and lights the way forward. 
-                        Like a strong tree reaching toward the light, we help children with autism spectrum disorder develop, flourish, and reach their full potential.
+                        Compassionate, play-based ABA therapy for ages 0-5—delivered in your home. We celebrate your child's strengths while building communication, social, and daily living skills through joyful, natural routines. Ready to begin? We're here to guide your family forward.
                     </p>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-beacon">
@@ -1169,61 +1200,31 @@
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3 class="service-title">Individual Growth Sessions</h3>
-                    <p class="service-description">
-                        One-on-one therapy tailored to nurture your child's unique strengths and address individual challenges with care.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <h3 class="service-title">Social Branches</h3>
-                    <p class="service-description">
-                        Group sessions where children connect, learn, and grow together in a supportive, structured environment.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
                         <i class="fas fa-home"></i>
                     </div>
-                    <h3 class="service-title">Family Roots Program</h3>
+                    <h3 class="service-title">1:1 In-Home ABA Therapy</h3>
                     <p class="service-description">
-                        Empowering parents with tools and strategies to reinforce growth at home and strengthen family bonds.
+                        Our dedicated Board Certified Behavior Analysts (BCBAs) and Registered Behavior Technicians (RBTs) develop and implement completely individualized therapy plans in the setting where your child is most comfortable—your home. This naturalistic approach helps children generalize skills more effectively for lasting, meaningful progress.
                     </p>
                 </div>
-                
+
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-school"></i>
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="service-title">School Partnerships</h3>
+                    <h3 class="service-title">Parent Coaching and Family Support</h3>
                     <p class="service-description">
-                        Building bridges between therapy and education to ensure consistent support across all environments.
+                        We view parents as essential partners in their child's success. Our coaching services are designed to provide you with a deep understanding of behavioral principles and arm you with effective, evidence-based strategies to manage challenging behaviors, teach new skills, and support your child every day.
                     </p>
                 </div>
-                
+
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-compass"></i>
+                        <i class="fas fa-handshake"></i>
                     </div>
-                    <h3 class="service-title">Developmental Navigation</h3>
+                    <h3 class="service-title">Community and Professional Partnerships</h3>
                     <p class="service-description">
-                        Comprehensive assessments that map your child's journey and guide personalized intervention strategies.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3 class="service-title">Early Blooms Program</h3>
-                    <p class="service-description">
-                        Specialized early intervention for toddlers, planting seeds of development during critical growth years.
+                        A child's success is a team effort. We bridge the gap between therapy, school, and other services by collaborating with educators, Speech-Language Pathologists (SLPs), and Occupational Therapists (OTs). We offer expert staff training and ongoing consultative support to create a consistent and holistic support system for your child across all environments.
                     </p>
                 </div>
             </div>
@@ -1233,25 +1234,28 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Who We Are</h2>
+            </div>
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <h2 class="section-title">Why Branch & Beacon?</h2>
-                    <p class="section-description">
-                        Like a tree that grows strong through nurturing care and a beacon that guides the way, 
-                        we combine evidence-based therapy with compassionate support to illuminate your child's path forward.
-                    </p>
-                    
-                    <div class="benefits-list">
+                    <div class="glass-card about-card">
+                        <p class="section-description">Navigating a new diagnosis or the daily challenges of raising a neurodivergent child? At Branch and Beacon, we are here to serve as your family's guiding light and source of hope. We specialize in early intervention (ages 0-5), providing high-quality care that blends the science of Applied Behavior Analysis (ABA) with the joy of play. This dedicated, one-on-one therapy is provided in the home, your child's natural environment where they are most comfortable.</p>
+                        <p class="section-description">Committed to moving our field away from generic, high-intensity treatment models, our therapy is always centered on your child's unique interests and needs. We are dedicated to equipping parents with the tools to be successful, while our child-centered approach lets kids be kids. By embedding therapeutic goals into natural play and daily routines, we focus on teaching communication, building social skills, and replacing challenging behaviors with functional skills. We are honored to walk alongside your family as we discover strengths, encourage independence, and create a path to success together.</p>
+                    </div>
+                </div>
+                
+                <div class="benefits-list">
                         <div class="benefit-item" data-index="0">
                             <div class="benefit-icon">
                                 <i class="fas fa-check"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>Rooted in Science</h4>
-                                <p>Every intervention grows from decades of research and proven ABA methodologies.</p>
+                                <h4>BCBA-owned and operated</h4>
+                                <p>We are personally and professionally dedicated to making a lasting, positive impact on your family.</p>
                             </div>
                             <div class="benefit-detail">
-                                <p>We rely on peer-reviewed research, ongoing supervision, and data-driven decision making. Programs are continuously adjusted based on measurable outcomes.</p>
+                                <p>To us, you are never just a number; we are partners on your journey, and we are honored to walk it with you.</p>
                                 <div class="benefit-controls">
                                     <button class="btn btn-glass benefit-next">Next</button>
                                     <button class="btn btn-glass benefit-close">Close</button>
@@ -1264,11 +1268,11 @@
                                 <i class="fas fa-check"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>Personalized Growth Plans</h4>
-                                <p>Each child's journey is unique, and our therapy branches adapt to their individual needs.</p>
+                                <h4>Neurodiversity-Affirming Care</h4>
+                                <p>We honor and respect your child for who they are.</p>
                             </div>
                             <div class="benefit-detail">
-                                <p>Your child's goals are built with family input and functional assessments. We tailor session structure, reinforcement, and environments to what works best.</p>
+                                <p>Our care plans are designed to celebrate their unique interests and ways of learning. We empower children by prioritizing self-advocacy, teaching functional communication that works for them, and always honoring their assent (their "yes" and "no").</p>
                                 <div class="benefit-controls">
                                     <button class="btn btn-glass benefit-next">Next</button>
                                     <button class="btn btn-glass benefit-close">Close</button>
@@ -1281,11 +1285,11 @@
                                 <i class="fas fa-check"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>Family as Foundation</h4>
-                                <p>We nurture the entire family ecosystem, ensuring sustainable growth and support.</p>
+                                <h4>Joyful & Effective Learning</h4>
+                                <p>We believe therapy should be fun.</p>
                             </div>
                             <div class="benefit-detail">
-                                <p>Caregiver training, practical home strategies, and consistent communication ensure skills generalize and last beyond sessions.</p>
+                                <p>Our play-based and child-led approach embeds learning so seamlessly into your child's natural play that they are simply enjoying themselves, intrinsically motivated to learn and grow.</p>
                                 <div class="benefit-controls">
                                     <button class="btn btn-glass benefit-next">Next</button>
                                     <button class="btn btn-glass benefit-close">Close</button>
@@ -1298,11 +1302,11 @@
                                 <i class="fas fa-check"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>Guiding Light Expertise</h4>
-                                <p>Our BCBAs serve as beacons, illuminating the path with expertise and compassion.</p>
+                                <h4>A Truly Unified Team</h4>
+                                <p>Your child's success depends on consistency.</p>
                             </div>
                             <div class="benefit-detail">
-                                <p>Our clinicians maintain certifications, receive mentoring, and collaborate across disciplines to support the whole child.</p>
+                                <p>We build a circle of support by collaborating closely with everyone involved in their care—from family and caregivers to teachers and other professionals—to create a seamless path to success across all environments.</p>
                                 <div class="benefit-controls">
                                     <button class="btn btn-glass benefit-next">Next</button>
                                     <button class="btn btn-glass benefit-close">Close</button>
@@ -1312,13 +1316,6 @@
                     </div>
                 </div>
                 
-                <div class="hero-visual fade-in">
-                    <div class="glass-card">
-                        <i class="fas fa-chart-line icon-large" aria-hidden="true"></i>
-                        <h3>A Decade of Growth</h3>
-                        <p>500+ families flourishing together</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1334,16 +1331,19 @@
             </div>
             
             <div class="team-grid">
-                <div class="team-card fade-in" data-photo="https://via.placeholder.com/600x400?text=Sarah+Johnson">
-                    <div class="avatar">SJ</div>
-                    <h3 class="team-name">Dr. Sarah Johnson</h3>
-                    <p class="team-role">Clinical Director, BCBA-D</p>
+                <div class="team-card fade-in" data-photo="https://via.placeholder.com/600x400?text=Annie+Angel">
+                    <div class="avatar">AA</div>
+                    <h3 class="team-name">Annie Angel</h3>
+                    <p class="team-role">Clinical Director, BCBA</p>
                     <p class="team-description">
-                        15+ years nurturing growth through early intervention. PhD in Applied Behavior Analysis with a passion for illuminating potential.
+                        Welcome– I’m so glad you’re here!
+For more than 12 years, I've had the privilege of working in the field of ABA. I earned my Master's degree in Applied Behavior Analysis from The Chicago School of Professional Psychology and have spent the last 7 years as a Board Certified Behavior Analyst (BCBA) working across home, school, clinic, and community settings.
+My passion is early intervention, and my practice is rooted in a compassionate, whole-child approach. I believe that true progress happens when a child feels safe, understood, and happy. That's why I intentionally incorporate play, sensory integration, and emotional regulation into my practice. As a Level 4 PFA-SBT certified clinician, I focus on understanding what makes your child light up and use those unique interests to build critical new skills in a way that is respectful, fun, and empowering.
+
                     </p>
                 </div>
                 
-                <div class="team-card fade-in" data-photo="https://via.placeholder.com/600x400?text=Michael+Chen">
+                <!-- <div class="team-card fade-in" data-photo="https://via.placeholder.com/600x400?text=Michael+Chen">
                     <div class="avatar">MC</div>
                     <h3 class="team-name">Michael Chen</h3>
                     <p class="team-role">Senior Behavior Analyst, BCBA</p>
@@ -1359,7 +1359,7 @@
                     <p class="team-description">
                         6 years helping young branches flourish through communication development and social skills training.
                     </p>
-                </div>
+                </div> -->
             </div>
             <div class="team-bio" id="teamBio" aria-live="polite">
                 <div class="team-bio-inner">
