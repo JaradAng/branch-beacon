@@ -493,17 +493,23 @@
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
+            width: 240px;
+            height: 240px;
             margin: 0 auto 24px;
             background: var(--primary-gradient);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
             box-shadow: 0 8px 24px rgba(45, 106, 79, 0.3);
             transition: var(--transition-bounce);
+        }
+
+        .service-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            opacity: 0.70;
         }
 
         .service-card:hover .service-icon {
@@ -1200,7 +1206,7 @@
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-home"></i>
+                        <img src="assets/indiv_therapy.jpg" alt="1:1 In-Home ABA Therapy">
                     </div>
                     <h3 class="service-title">1:1 In-Home ABA Therapy</h3>
                     <p class="service-description">
@@ -1210,7 +1216,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-users"></i>
+                        <img src="assets/parent_coaching.png" alt="Parent Coaching and Family Support">
                     </div>
                     <h3 class="service-title">Parent Coaching and Family Support</h3>
                     <p class="service-description">
@@ -1220,7 +1226,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
+                        <img src="assets/consult.jpg" alt="Community and Professional Partnerships">
                     </div>
                     <h3 class="service-title">Community and Professional Partnerships</h3>
                     <p class="service-description">
@@ -1331,7 +1337,7 @@
             </div>
             
             <div class="team-grid">
-                <div class="team-card fade-in" data-photo="https://via.placeholder.com/600x400?text=Annie+Angel">
+                <div class="team-card fade-in" data-photo="assets/aa1.png">
                     <div class="avatar">AA</div>
                     <h3 class="team-name">Annie Angel</h3>
                     <p class="team-role">Clinical Director, BCBA</p>
