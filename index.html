@@ -493,8 +493,8 @@
         }
 
         .service-icon {
-            width: 240px;
-            height: 240px;
+            width: 300px;
+            height: 300px;
             margin: 0 auto 24px;
             background: var(--primary-gradient);
             border-radius: 20px;
@@ -506,9 +506,10 @@
         }
 
         .service-icon img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            object-fit: cover;
             opacity: 0.70;
         }
 
@@ -531,12 +532,15 @@
         /* About Section with Branch Theme */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1fr;
+            gap: 50px;
             align-items: center;
         }
 
         .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             margin-top: 32px;
         }
 
@@ -585,16 +589,7 @@
             position: relative;
         }
 
-        /* Expandable state for About benefits */
-        .benefit-item { cursor: pointer; }
-        .benefit-item .benefit-detail { display: none; margin-top: 12px; color: rgba(255, 255, 255, 0.9); }
-        .benefit-item.expanded .benefit-detail { display: block; }
-        .benefit-controls { margin-top: 16px; display: flex; gap: 10px; }
-        .benefit-item[hidden] { display: none !important; }
-
-        .benefit-item::after {
-            content: none;
-        }
+        /* About benefits */
 
         .benefit-item:hover {
             transform: translateX(10px);
@@ -633,70 +628,59 @@
         /* Team Cards with Beacon Theme */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 30px;
         }
 
-        .team-card {
+        .team-member-card {
             background: var(--glass-white);
             backdrop-filter: var(--blur-medium);
             border-radius: 20px;
             border: 1px solid var(--glass-border);
             padding: 32px;
-            text-align: center;
             transition: var(--transition-smooth);
             box-shadow: var(--shadow-small);
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            text-align: left;
         }
 
-        .team-card:hover {
+        .team-member-card:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-large);
             background: var(--glass-green);
         }
 
-        .avatar {
-            width: 100px;
-            height: 100px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            margin: 0 auto 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 700;
-            color: white;
+        .team-photo {
+            width: 300px;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            flex-shrink: 0;
             box-shadow: 0 8px 24px rgba(45, 106, 79, 0.4);
-            position: relative;
         }
 
-        .avatar::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            background: var(--beacon-gradient);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.3;
-            filter: blur(10px);
+        .team-info {
+            flex-grow: 1;
         }
 
         .team-name {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             margin-bottom: 8px;
         }
 
         .team-role {
             color: #fcbf49;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
             font-weight: 600;
         }
 
         .team-description {
             color: rgba(255, 255, 255, 0.85);
-            line-height: 1.6;
-            font-size: 14px;
+            line-height: 1.7;
+            font-size: 16px;
         }
 
         /* Team Bio Detail */
@@ -1075,6 +1059,12 @@
                 transform: rotate(-45deg) translate(7px, -8px);
             }
 
+            .team-member-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
             .hero-content,
             .about-content,
             .contact-content {
@@ -1206,7 +1196,8 @@
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <img src="assets/indiv_therapy.jpg" alt="1:1 In-Home ABA Therapy">
+                        <!-- <img src="assets/indiv_therapy.jpg" alt="1:1 In-Home ABA Therapy"> -->
+                        <img src="assets/playreal.jpg" alt="1:1 In-Home ABA Therapy">
                     </div>
                     <h3 class="service-title">1:1 In-Home ABA Therapy</h3>
                     <p class="service-description">
@@ -1216,6 +1207,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
+                        <!-- <img src="assets/parent_coaching.png" alt="Parent Coaching and Family Support"> -->
                         <img src="assets/parent_coaching.png" alt="Parent Coaching and Family Support">
                     </div>
                     <h3 class="service-title">Parent Coaching and Family Support</h3>
@@ -1226,7 +1218,8 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <img src="assets/consult.jpg" alt="Community and Professional Partnerships">
+                        <img src="assets/Partnership.png" alt="Community and Professional Partnerships">
+                        <!-- <img src="assets/meetreal.jpg" alt="Community and Professional Partnerships"> -->
                     </div>
                     <h3 class="service-title">Community and Professional Partnerships</h3>
                     <p class="service-description">
@@ -1246,13 +1239,13 @@
             <div class="about-content">
                 <div class="about-text fade-in">
                     <div class="glass-card about-card">
-                        <p class="section-description">Navigating a new diagnosis or the daily challenges of raising a neurodivergent child? At Branch and Beacon, we are here to serve as your family's guiding light and source of hope. We specialize in early intervention (ages 0-5), providing high-quality care that blends the science of Applied Behavior Analysis (ABA) with the joy of play. This dedicated, one-on-one therapy is provided in the home, your child's natural environment where they are most comfortable.</p>
-                        <p class="section-description">Committed to moving our field away from generic, high-intensity treatment models, our therapy is always centered on your child's unique interests and needs. We are dedicated to equipping parents with the tools to be successful, while our child-centered approach lets kids be kids. By embedding therapeutic goals into natural play and daily routines, we focus on teaching communication, building social skills, and replacing challenging behaviors with functional skills. We are honored to walk alongside your family as we discover strengths, encourage independence, and create a path to success together.</p>
+                        <p class="section-description">Navigating a new diagnosis or the daily challenges of raising a neurodivergent child? At Branch and Beacon, we are here to serve as your family's guiding light and source of hope. We specialize in early intervention (ages 0-6), providing high-quality care that blends the science of Applied Behavior Analysis (ABA) with the joy of play. This dedicated, one-on-one therapy is provided in the home- where you and your child are most comfortable.</p>
+                        <p class="section-description">We believe learning blossoms when it's joyful and motivated from within. By following your child's lead, celebrating their unique strengths, and connecting through play, we create natural moments for them to learn, grow, and flourish. Therapeutic goals are tailored to your child’s unique needs to teach communication, build social skills, and replace challenging behaviors with functional, empowering alternatives. We are personally and professionally dedicated to making a lasting, positive impact on your family. To us, you are never just a number; we are partners on your journey, and we are honored to walk it with you.</p>
                     </div>
                 </div>
                 
                 <div class="benefits-list">
-                        <div class="benefit-item" data-index="0">
+                        <div class="benefit-item">
                             <div class="benefit-icon">
                                 <i class="fas fa-check"></i>
                             </div>
@@ -1260,63 +1253,55 @@
                                 <h4>BCBA-owned and operated</h4>
                                 <p>We are personally and professionally dedicated to making a lasting, positive impact on your family.</p>
                             </div>
-                            <div class="benefit-detail">
-                                <p>To us, you are never just a number; we are partners on your journey, and we are honored to walk it with you.</p>
-                                <div class="benefit-controls">
-                                    <button class="btn btn-glass benefit-next">Next</button>
-                                    <button class="btn btn-glass benefit-close">Close</button>
-                                </div>
-                            </div>
                         </div>
-                        
-                        <div class="benefit-item" data-index="1">
+
+                        <div class="benefit-item">
                             <div class="benefit-icon">
                                 <i class="fas fa-check"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>Neurodiversity-Affirming Care</h4>
-                                <p>We honor and respect your child for who they are.</p>
-                            </div>
-                            <div class="benefit-detail">
-                                <p>Our care plans are designed to celebrate their unique interests and ways of learning. We empower children by prioritizing self-advocacy, teaching functional communication that works for them, and always honoring their assent (their "yes" and "no").</p>
-                                <div class="benefit-controls">
-                                    <button class="btn btn-glass benefit-next">Next</button>
-                                    <button class="btn btn-glass benefit-close">Close</button>
-                                </div>
+                                <h4>Assent-based approach</h4>
+                                <p>We always honor your child's "yes" and "no" in every interaction, respecting their autonomy and comfort.</p>
                             </div>
                         </div>
-                        
-                        <div class="benefit-item" data-index="2">
+
+                        <div class="benefit-item">
                             <div class="benefit-icon">
                                 <i class="fas fa-check"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>Joyful & Effective Learning</h4>
-                                <p>We believe therapy should be fun.</p>
-                            </div>
-                            <div class="benefit-detail">
-                                <p>Our play-based and child-led approach embeds learning so seamlessly into your child's natural play that they are simply enjoying themselves, intrinsically motivated to learn and grow.</p>
-                                <div class="benefit-controls">
-                                    <button class="btn btn-glass benefit-next">Next</button>
-                                    <button class="btn btn-glass benefit-close">Close</button>
-                                </div>
+                                <h4>Treatment hour recommendations based on the child's needs</h4>
+                                <p>Each treatment plan is individually tailored with the precise number of hours needed for optimal progress.</p>
                             </div>
                         </div>
-                        
-                        <div class="benefit-item" data-index="3">
+
+                        <div class="benefit-item">
                             <div class="benefit-icon">
                                 <i class="fas fa-check"></i>
                             </div>
                             <div class="benefit-content">
-                                <h4>A Truly Unified Team</h4>
-                                <p>Your child's success depends on consistency.</p>
+                                <h4>Hands-on parent coaching</h4>
+                                <p>We provide direct, practical training to empower parents with effective strategies they can use daily.</p>
                             </div>
-                            <div class="benefit-detail">
-                                <p>We build a circle of support by collaborating closely with everyone involved in their care—from family and caregivers to teachers and other professionals—to create a seamless path to success across all environments.</p>
-                                <div class="benefit-controls">
-                                    <button class="btn btn-glass benefit-next">Next</button>
-                                    <button class="btn btn-glass benefit-close">Close</button>
-                                </div>
+                        </div>
+
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Team Collaboration with SLT, OT, teachers</h4>
+                                <p>We work closely with Speech-Language Therapists, Occupational Therapists, and educators for comprehensive care.</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Play-based learning</h4>
+                                <p>Therapy is seamlessly integrated into natural play, making learning engaging and effective.</p>
                             </div>
                         </div>
                     </div>
@@ -1337,37 +1322,18 @@
             </div>
             
             <div class="team-grid">
-                <div class="team-card fade-in" data-photo="assets/aa1.png">
-                    <div class="avatar">AA</div>
-                    <h3 class="team-name">Annie Angel</h3>
-                    <p class="team-role">Clinical Director, BCBA</p>
-                    <p class="team-description">
-                        Welcome– I’m so glad you’re here!
-For more than 12 years, I've had the privilege of working in the field of ABA. I earned my Master's degree in Applied Behavior Analysis from The Chicago School of Professional Psychology and have spent the last 7 years as a Board Certified Behavior Analyst (BCBA) working across home, school, clinic, and community settings.
-My passion is early intervention, and my practice is rooted in a compassionate, whole-child approach. I believe that true progress happens when a child feels safe, understood, and happy. That's why I intentionally incorporate play, sensory integration, and emotional regulation into my practice. As a Level 4 PFA-SBT certified clinician, I focus on understanding what makes your child light up and use those unique interests to build critical new skills in a way that is respectful, fun, and empowering.
-
-                    </p>
+                <div class="team-member-card fade-in">
+                    <img src="assets/aa1.png" alt="Annie Angel" class="team-photo">
+                    <div class="team-info">
+                        <h3 class="team-name">Annie Angel</h3>
+                        <p class="team-role">Clinical Director, BCBA</p>
+                        <p class="team-description">
+                            Welcome– I’m so glad you’re here! For more than 12 years, I've had the privilege of working in the field of ABA. I earned my Master's degree in Applied Behavior Analysis from The Chicago School of Professional Psychology and have spent the last 7 years as a Board Certified Behavior Analyst (BCBA) working across home, school, clinic, and community settings. My passion is early intervention, and my practice is rooted in a compassionate, whole-child approach. I believe that true progress happens when a child feels safe, understood, and happy. That's why I intentionally incorporate play, sensory integration, and emotional regulation into my practice. As a Level 4 PFA-SBT certified clinician, I focus on understanding what makes your child light up and use those unique interests to build critical new skills in a way that is respectful, fun, and empowering.
+                        </p>
+                    </div>
                 </div>
-                
-                <!-- <div class="team-card fade-in" data-photo="https://via.placeholder.com/600x400?text=Michael+Chen">
-                    <div class="avatar">MC</div>
-                    <h3 class="team-name">Michael Chen</h3>
-                    <p class="team-role">Senior Behavior Analyst, BCBA</p>
-                    <p class="team-description">
-                        8 years guiding adolescents and families, specializing in building strong support systems that foster lasting growth.
-                    </p>
-                </div>
-                
-                <div class="team-card fade-in" data-photo="https://via.placeholder.com/600x400?text=Lisa+Rodriguez">
-                    <div class="avatar">LR</div>
-                    <h3 class="team-name">Lisa Rodriguez</h3>
-                    <p class="team-role">Pediatric Specialist, BCBA</p>
-                    <p class="team-description">
-                        6 years helping young branches flourish through communication development and social skills training.
-                    </p>
-                </div> -->
             </div>
-            <div class="team-bio" id="teamBio" aria-live="polite">
+            <div class="team-bio" id="teamBio" aria-live="polite" style="display: none;">
                 <div class="team-bio-inner">
                     <img src="" alt="" id="teamBioPhoto">
                     <div class="bio-content">
@@ -1628,105 +1594,6 @@ My passion is early intervention, and my practice is rooted in a compassionate, 
             observer.observe(el);
         });
         
-        // Team bio interaction
-        const teamGrid = document.querySelector('.team-grid');
-        const teamCards = document.querySelectorAll('.team-card');
-        const teamBio = document.getElementById('teamBio');
-        const teamBioPhoto = document.getElementById('teamBioPhoto');
-        const teamBioName = document.getElementById('teamBioName');
-        const teamBioRole = document.getElementById('teamBioRole');
-        const teamBioText = document.getElementById('teamBioText');
-        const teamBioBack = document.getElementById('teamBioBack');
-
-        function showTeamBio(card) {
-            const name = card.querySelector('.team-name')?.textContent.trim() || '';
-            const role = card.querySelector('.team-role')?.textContent.trim() || '';
-            const text = card.querySelector('.team-description')?.textContent.trim() || '';
-            const photo = card.getAttribute('data-photo') || `https://via.placeholder.com/600x400?text=${encodeURIComponent(name)}`;
-
-            teamBioPhoto.src = photo;
-            teamBioPhoto.alt = `${name} photo`;
-            teamBioName.textContent = name;
-            teamBioRole.textContent = role;
-            teamBioText.textContent = text;
-
-            teamGrid.style.display = 'none';
-            teamBio.style.display = 'block';
-        }
-
-        teamCards.forEach(card => {
-            card.setAttribute('role', 'button');
-            card.setAttribute('tabindex', '0');
-            const handler = () => showTeamBio(card);
-            card.addEventListener('click', handler);
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handler();
-                }
-            });
-        });
-
-        teamBioBack?.addEventListener('click', () => {
-            teamBio.style.display = 'none';
-            teamGrid.style.display = 'grid';
-        });
-
-        // About benefits: expand/hide others with Next/Close
-        const benefitItems = document.querySelectorAll('.benefit-item');
-        function resetBenefits() {
-            benefitItems.forEach(item => {
-                item.classList.remove('expanded');
-                item.hidden = false;
-                item.setAttribute('aria-expanded', 'false');
-            });
-        }
-        function expandBenefit(index) {
-            resetBenefits();
-            const item = benefitItems[index];
-            if (!item) return;
-            item.classList.add('expanded');
-            item.hidden = false;
-            item.setAttribute('aria-expanded', 'true');
-            benefitItems.forEach((el, i) => { if (i !== index) el.hidden = true; });
-            const nextBtn = item.querySelector('.benefit-next');
-            if (nextBtn && nextBtn.focus) {
-                try { nextBtn.focus({ preventScroll: true }); } catch (e) { /* older browsers */ nextBtn.focus(); }
-            }
-        }
-        // Initialize accessibility and click/keyboard handlers
-        benefitItems.forEach((item, i) => {
-            item.setAttribute('role', 'button');
-            item.setAttribute('tabindex', '0');
-            item.setAttribute('aria-expanded', 'false');
-            item.addEventListener('click', (e) => {
-                if (e.target && e.target.closest('button')) return; // ignore clicks on internal buttons
-                expandBenefit(i);
-            });
-            item.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    expandBenefit(i);
-                }
-            });
-        });
-        // Next and Close buttons
-        document.querySelectorAll('.benefit-next').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const item = e.currentTarget.closest('.benefit-item');
-                const idx = parseInt(item?.getAttribute('data-index') || '0', 10);
-                const nextIndex = (idx + 1) % benefitItems.length;
-                expandBenefit(nextIndex);
-            });
-        });
-        document.querySelectorAll('.benefit-close').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                resetBenefits();
-            });
-        });
-
         // Parallax effect disabled for a calmer, more professional feel
     </script>
 </body>
