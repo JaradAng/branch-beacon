@@ -1781,10 +1781,16 @@
             });
         });
         
-        // Initialize EmailJS
-        (function() {
-            emailjs.init("3n31g_C6wkKB3416Y"); // Replace with your EmailJS public key
-        })();
+        // Initialize EmailJS when it's loaded
+        function initializeEmailJS() {
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init("3n31g_C6wkKB3416Y");
+                console.log('EmailJS initialized successfully');
+            } else {
+                console.log('EmailJS not loaded yet, retrying...');
+                setTimeout(initializeEmailJS, 100);
+            }
+        }
 
         // Form submission with EmailJS
         const contactForm = document.getElementById('contactForm');
@@ -1793,6 +1799,14 @@
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            // Check if EmailJS is loaded
+            if (typeof emailjs === 'undefined') {
+                formMessage.className = 'form-message error';
+                formMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Email service is still loading. Please wait a moment and try again.';
+                formMessage.style.display = 'block';
+                return;
+            }
             
             // Disable submit button and show loading state
             submitBtn.disabled = true;
@@ -1892,6 +1906,10 @@
             var script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
             script.async = true;
+            script.onload = function() {
+                // Initialize EmailJS after it's loaded
+                initializeEmailJS();
+            };
             document.head.appendChild(script);
         })();
     </script>
