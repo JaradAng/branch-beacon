@@ -1645,6 +1645,11 @@
                     </div>
                     
                     <div class="form-group">
+                        <label class="form-label" for="childName">Child's Name</label>
+                        <input type="text" id="childName" name="childName" class="form-control" placeholder="Enter your child's name">
+                    </div>
+                    
+                    <div class="form-group">
                         <label class="form-label" for="childAge">Child's Age Range</label>
                         <select id="childAge" name="childAge" class="form-control">
                             <option value="">Select age range</option>
@@ -1778,7 +1783,7 @@
         
         // Initialize EmailJS
         (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+            emailjs.init("3n31g_C6wkKB3416Y"); // Replace with your EmailJS public key
         })();
 
         // Form submission with EmailJS
@@ -1803,6 +1808,7 @@
                     lastName: document.getElementById('lastName').value,
                     email: document.getElementById('email').value,
                     phone: document.getElementById('phone').value,
+                    childName: document.getElementById('childName').value,
                     childAge: document.getElementById('childAge').value,
                     message: document.getElementById('message').value,
                     to_email: 'annie@branchandbeacon.care'
@@ -1810,8 +1816,8 @@
 
                 // Send email using EmailJS
                 const response = await emailjs.send(
-                    'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-                    'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+                    'service_uczuyec', // Replace with your EmailJS service ID
+                    'template_xhxgpmz', // Replace with your EmailJS template ID
                     formData
                 );
 
