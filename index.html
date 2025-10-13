@@ -1562,48 +1562,39 @@
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-header fade-in">
-                <h2 class="section-title">Stories of Growth</h2>
-                <p class="section-description">
-                    Real families sharing how Branch & Beacon illuminated their path forward
-                </p>
+                <h2 class="section-title">Testimonials</h2>
             </div>
             
             <div class="testimonials-grid">
                 <div class="testimonial-card fade-in">
                     <p class="testimonial-text">
-                        Branch & Beacon became our guiding light during a challenging time. Our daughter has blossomed from a quiet bud into a confident child who communicates her needs clearly. The growth has been remarkable.
+                        We feel fortunate to have crossed paths with Annie so early on in our Autism journey. We didn't realize at the time that we were working with the absolute BEST! Our son made incredible progress with her. She obviously has the education and credentials, but she really identifies the individual needs of the children she works with. Most importantly our son felt seen, respected, and understood, which is all a parent could ask for. We highly recommend working with Annie if/when given the opportunity.
                     </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">JM</div>
                         <div class="author-info">
-                            <strong>Jennifer Martinez</strong>
-                            <span>Parent of 5-year-old</span>
+                            <strong>Lacy and Cole W</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">
+                        Annie supported both of our girls diagnosed with autism from the time they were younger than two years old. We've now had experience with others since we moved, and while fantastic, I can confidently promise Annie is head and shoulders above anyone else. She's extremely proactive, accountable, and works as a true partner. She's trained us to be the best supporters for our children as much as she worked with our girls. Being a parent of a child with autism can feel extremely isolating and scary because you feel like you have no roadmap, or can turn to anyone since every child on the spectrum is so different. She made us feel like there is a clear lit path, which completely changed our mindset and our outlook more broadly. She's organized, diligent and caring. I've broken down with her more than once, and always felt safe and supported. I can't recommend her highly enough. If we could work with her forever, we would. In a heartbeat. We should all be so fortunate to have an Annie in our lives. 
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <strong>Ashley and Kelly W</strong>
                         </div>
                     </div>
                 </div>
                 
                 <div class="testimonial-card fade-in">
                     <p class="testimonial-text">
-                        The team truly serves as beacons of hope and expertise. My son's social skills have grown beyond our expectations, branching out in ways we never imagined possible.
+                        Working with Annie was life-changing for our family. She met my son with patience, creativity, and deep understanding. She always saw his potential, not just his challenges. Annie blends strategy and compassion seamlessly, creating individualized plans that truly work while keeping therapy fun and engaging. She empowered us as parents, explained every strategy, and celebrated every small win alongside us. Because of Annie, my son made incredible progress in communication, behavior, and confidence!
                     </p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">DK</div>
                         <div class="author-info">
-                            <strong>David Kim</strong>
-                            <span>Parent of 8-year-old</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">
-                        The Family Roots program gave us the tools to nurture our child's growth at home. We now feel like strong branches supporting our little one's journey every day.
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MS</div>
-                        <div class="author-info">
-                            <strong>Maria Silva</strong>
-                            <span>Parent of 4-year-old</span>
+                            <strong>Tiffany J</strong>
                         </div>
                     </div>
                 </div>
@@ -1663,6 +1654,15 @@
                         <label class="form-label" for="message">How can we help your child grow?</label>
                         <textarea id="message" name="message" class="form-control" placeholder="Tell us about your child's unique journey..."></textarea>
                     </div>
+                    
+                    <!-- Honeypot field for spam protection (hidden from users) -->
+                    <div style="position: absolute; left: -9999px; opacity: 0;" aria-hidden="true">
+                        <label for="website">Website (leave blank):</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    
+                    <!-- Rate limiting display -->
+                    <div id="rateLimitMessage" class="form-message error" style="display: none; margin-bottom: 20px; padding: 15px; border-radius: 12px; text-align: center; font-weight: 600;"></div>
                     
                     <button type="submit" class="btn-submit" id="submitBtn" aria-label="Submit contact form to begin your ABA therapy journey">
                         <span aria-hidden="true">✉️</span> Begin Your Journey
@@ -1792,10 +1792,27 @@
             }
         }
 
+        // Spam protection and rate limiting
+        let lastSubmissionTime = 0;
+        const RATE_LIMIT_MS = 60000; // 1 minute between submissions
+        const MAX_SUBMISSIONS_PER_HOUR = 3;
+        let submissionCount = 0;
+        let hourStart = Date.now();
+
+        // Reset submission count every hour
+        setInterval(() => {
+            const now = Date.now();
+            if (now - hourStart > 3600000) { // 1 hour
+                submissionCount = 0;
+                hourStart = now;
+            }
+        }, 60000); // Check every minute
+
         // Form submission with EmailJS
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
         const formMessage = document.getElementById('formMessage');
+        const rateLimitMessage = document.getElementById('rateLimitMessage');
 
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -1807,6 +1824,33 @@
                 formMessage.style.display = 'block';
                 return;
             }
+
+            // Honeypot spam protection
+            const honeypot = document.getElementById('website').value;
+            if (honeypot !== '') {
+                console.log('Spam detected - honeypot filled');
+                return; // Silently reject spam
+            }
+
+            // Rate limiting checks
+            const now = Date.now();
+            const timeSinceLastSubmission = now - lastSubmissionTime;
+            
+            if (timeSinceLastSubmission < RATE_LIMIT_MS) {
+                const remainingTime = Math.ceil((RATE_LIMIT_MS - timeSinceLastSubmission) / 1000);
+                rateLimitMessage.innerHTML = `<i class="fas fa-clock"></i> Please wait ${remainingTime} seconds before submitting again.`;
+                rateLimitMessage.style.display = 'block';
+                return;
+            }
+
+            if (submissionCount >= MAX_SUBMISSIONS_PER_HOUR) {
+                rateLimitMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Too many submissions. Please try again in an hour.';
+                rateLimitMessage.style.display = 'block';
+                return;
+            }
+
+            // Hide rate limit message if it was showing
+            rateLimitMessage.style.display = 'none';
             
             // Disable submit button and show loading state
             submitBtn.disabled = true;
@@ -1835,6 +1879,10 @@
                     formData
                 );
 
+                // Update rate limiting counters
+                lastSubmissionTime = now;
+                submissionCount++;
+                
                 // Show success message
                 formMessage.className = 'form-message success';
                 formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent to Annie. We will contact you within 24 hours to begin your journey with Branch & Beacon.';
