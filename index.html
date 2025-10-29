@@ -327,6 +327,12 @@
             gap: 10px;
         }
 
+        .brand-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
         .brand-icon {
             width: 40px;
             height: 30px;
@@ -428,6 +434,48 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+            position: relative;
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            inset: -20%;
+            pointer-events: none;
+            background:
+                repeating-conic-gradient(
+                    from 0deg at 67% 50%,
+                    rgba(252, 191, 73, 0.12) 0deg,
+                    rgba(252, 191, 73, 0.12) 3deg,
+                    transparent 3deg,
+                    transparent 9deg
+                ),
+                radial-gradient(
+                    ellipse 100% 100% at 75% 50%,
+                    rgba(252, 191, 73, 0.15) 0%,
+                    rgba(252, 191, 73, 0.08) 25%,
+                    rgba(252, 191, 73, 0.04) 45%,
+                    rgba(252, 191, 73, 0.02) 60%,
+                    rgba(252, 191, 73, 0.008) 70%,
+                    rgba(252, 191, 73, 0.003) 80%,
+                    rgba(252, 191, 73, 0.001) 90%,
+                    transparent 100%
+                );
+            opacity: 0.35;
+            filter: blur(3px);
+            z-index: 0;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 50%, black 85%, transparent 100%);
+        }
+
+        .hero-text,
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+            .hero-content::before { content: none; }
         }
 
         .hero-title {
@@ -519,6 +567,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+        }
+
+        .hero-visual::before {
+            content: none;
+        }
+
+        @media (max-width: 900px) {
+            .hero-visual::before { content: none; }
         }
 
         .glass-card {
@@ -533,6 +590,7 @@
             position: relative;
             overflow: hidden;
             transition: var(--transition-smooth);
+            z-index: 1;
         }
 
         .glass-card::before {
@@ -555,6 +613,14 @@
             font-size: 64px;
             margin-bottom: 24px;
             color: #52b788;
+        }
+
+        .icon-small {
+            width: clamp(280px, 45vw, 450px);
+            height: auto;
+            max-height: 350px;
+            margin-bottom: 24px;
+            object-fit: contain;
         }
 
         @keyframes growPulse {
@@ -1340,8 +1406,7 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <div class="brand">
-                <div class="brand-icon" aria-hidden="true">B&B</div>
-                <span class="brand-text">Branch & Beacon</span>
+                <img src="assets/logo-cropped.svg" alt="Branch & Beacon" class="brand-logo" />
             </div>
             <div class="nav-menu" id="navMenu" role="menubar">
                 <a href="#home" class="nav-link" role="menuitem">Home</a>
@@ -1383,9 +1448,9 @@
                 </div>
                 <div class="hero-visual">
                     <div class="glass-card">
-                        <span class="icon-large" aria-hidden="true">🍃</span>
-                        <h3>Growing Together</h3>
-                        <p>Rooted in science, reaching for tomorrow</p>
+                        <img src="assets/BehavioralWhite.png" alt="Growing Together icon" class="icon-small" />
+                        <!-- <h3>Growing Together</h3>
+                        <p>Rooted in science, reaching for tomorrow</p> -->
                     </div>
                 </div>
             </div>
