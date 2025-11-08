@@ -414,6 +414,11 @@
             box-shadow: 0 6px 20px rgba(252, 191, 73, 0.5);
         }
 
+        /* Remove underlines from all links */
+        a {
+            text-decoration: none;
+        }
+
         /* Hero Section with Branch & Beacon Theme */
         .hero {
             min-height: 100vh;
@@ -1415,7 +1420,7 @@
                 <a href="#team" class="nav-link" role="menuitem">Team</a>
                 <a href="#testimonials" class="nav-link" role="menuitem">Testimonials</a>
                 <!-- <a href="#contact" class="nav-link" role="menuitem">Contact</a> -->
-                <button class="nav-cta" aria-label="Get started with ABA therapy services" type="button">Get Started</button>
+                <a href="#contact" class="nav-cta" aria-label="Get started with ABA therapy services">Get Started</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
@@ -1739,12 +1744,12 @@
                 
                 <div class="contact-info fade-in">
                     <div class="contact-item">
-                        <h4><i class="fas fa-phone"></i> Phone</h4>
+                        <h4><i class="fas fa-phone"></i> Call Us</h4>
                         <p>512-631-4598</p>
                     </div>
                     
                     <div class="contact-item">
-                        <h4><i class="fas fa-envelope"></i> Email</h4>
+                        <h4><i class="fas fa-envelope"></i> Email Us</h4>
                         <p>annie@branchandbeacon.care</p>
                     </div>
                     
@@ -1828,7 +1833,7 @@
         });
         
         // Close menu when clicking links
-        document.querySelectorAll('.nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
