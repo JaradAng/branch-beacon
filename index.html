@@ -1089,6 +1089,99 @@
             transition: var(--transition-smooth);
         }
 
+        /* FAQ Section */
+        .faq {
+            background: linear-gradient(180deg,
+                rgba(13, 27, 42, 0.9) 0%,
+                rgba(27, 58, 75, 0.9) 30%,
+                rgba(45, 106, 79, 0.85) 60%,
+                rgba(64, 145, 108, 0.8) 100%
+            );
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(252, 191, 73, 0.08), transparent 65%);
+            pointer-events: none;
+        }
+
+        .faq > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-medium);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: var(--shadow-small);
+            transition: var(--transition-smooth);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+            background: rgba(82, 183, 136, 0.18);
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .faq-item p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .faq-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0 16px;
+        }
+
+        .faq-list li {
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .faq-list li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: #52b788;
+        }
+
+        .faq-item a {
+            color: #fcbf49;
+            text-decoration: underline;
+            text-decoration-color: rgba(252, 191, 73, 0.6);
+            text-decoration-thickness: 2px;
+        }
+
+        .faq-item a:hover {
+            color: #ffd60a;
+        }
+
         .form-message.success {
             background: var(--glass-green);
             border-color: #52b788;
@@ -1356,16 +1449,6 @@
             animation: fadeIn 0.8s ease-out;
         }
 
-        /* Performance optimizations */
-        img {
-            loading: lazy;
-        }
-
-        .service-icon img,
-        .team-photo {
-            loading: eager;
-        }
-
         /* Reduce motion for accessibility */
         @media (prefers-reduced-motion: reduce) {
             *,
@@ -1419,6 +1502,7 @@
                 <a href="#about" class="nav-link" role="menuitem">About</a>
                 <a href="#team" class="nav-link" role="menuitem">Team</a>
                 <a href="#testimonials" class="nav-link" role="menuitem">Testimonials</a>
+                <a href="#faq" class="nav-link" role="menuitem">FAQ</a>
                 <!-- <a href="#contact" class="nav-link" role="menuitem">Contact</a> -->
                 <a href="#contact" class="nav-cta" aria-label="Get started with ABA therapy services">Get Started</a>
             </div>
@@ -1764,6 +1848,51 @@
                         Saturday: 9:00 AM - 2:00 PM</p>
                         <p><strong>Service Areas:</strong> Austin, Marble Falls, and surrounding Central Texas communities</p>
                     </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">FAQ Page</h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item fade-in">
+                    <h3 class="faq-question">What is ABA Therapy?</h3>
+                    <p>Applied Behavior Analysis (ABA) is a therapy based on the science of learning and behavior. At Branch &amp; Beacon, we embed the principles of ABA into your child’s play and every-day routines to teach meaningful skills, including communication, social skills, and independence.</p>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <h3 class="faq-question">What services does Branch &amp; Beacon provide?</h3>
+                    <p>Our mission is to serve your family and improve the quality of life for your entire household. We focus on teaching skills through connection and play, ensuring our services are a fit for your unique needs.</p>
+                    <p>We provide several core services:</p>
+                    <ul class="faq-list">
+                        <li><strong>One-on-One ABA Therapy:</strong> We provide compassionate, individualized therapy sessions in the environments where your child lives and learns, including your home, school, and community.</li>
+                        <li><strong>Parent Coaching:</strong> We equip caregivers with the tools, strategies, and confidence to support their neurodivergent child and strengthen the parent-child relationship.</li>
+                        <li><strong>School &amp; Daycare Consultation:</strong> We partner with schools and daycare centers, offering expert consultation and training to help create supportive and effective learning environments for all children.</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <h3 class="faq-question">Do you require an autism diagnosis?</h3>
+                    <p>This depends on the service you are seeking and your method of payment. We offer different paths to support your family, depending on your specific needs.</p>
+                    <p><strong>For Insurance-Based ABA Therapy:</strong> To use health insurance to pay for one-on-one ABA therapy, most insurance plans do require a formal autism diagnosis from a qualified medical professional.</p>
+                    <p><strong>For Private-Pay Services:</strong> A formal diagnosis is not required for our private-pay services, including parent coaching and consultation. These services are available to any family who feels they could benefit from support and guidance.</p>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <h3 class="faq-question">How do I get a diagnosis?</h3>
+                    <p>If you don’t have a formal diagnosis or are unsure of where to begin, complete the Autism screening tool below. If needed, we will walk you through next steps in receiving a formal evaluation.</p>
+                    <p><a href="https://alpacahealth.typeform.com/m-chat-r" target="_blank" rel="noopener">https://alpacahealth.typeform.com/m-chat-r</a></p>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <h3 class="faq-question">Who is Alpaca Health?</h3>
+                    <p>Branch &amp; Beacon has partnered with Alpaca Health as our trusted administrative team. They handle all the "back office" operations for our practice, including insurance verification, billing, and intake. This partnership allows us to dedicate 100% of our focus to what truly matters: providing direct, high-quality, and individualized care for your child and family.</p>
                 </div>
             </div>
         </div>
